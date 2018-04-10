@@ -47,7 +47,7 @@
         <input  name="idcard"  id="idcard"  type="text" class="btn "  placeholder="您的身份证号(必填）">
         <input  name="qq" type="text" class="btn " id="qq"  placeholder="您的QQ号">
         <!-- 判断是否是代理发起的邀请的注册，是则隐藏上级代理表单填写，改为自动获取 -->
-        <input  name="sjdls" <?php if($yqm=="") {?>type="text" <?php }else {?>type="hidden"<?php }?> class="btn " id="sjdls" value="<?php echo $yqm ?>"  style="width:190px;" placeholder="上级代理微信">
+        <input  name="sjdls" <?php if($yqm=="") {?>type="text" <?php }else {?>type="hidden"<?php }?> class="btn " id="sjdls" value="<?php echo $yqm ?>" placeholder="上级代理微信">
         <select name="product" class="btn"> 
          <option value="全部产品">代理产品不限</option>
          <?php 

@@ -13,27 +13,23 @@
 <body>
   <div class="login"><a href="agent"><img src="themes/<?php echo $cf['agent_themes'];?>/images/login.png" ></a></div>
   <div class="wap " >
-    <img src="themes/<?php echo $cf['agent_themes'];?>/images/sobg.jpg">
     <div>
-     <form action="zs/wapzslist.php" method="GET">
-      <input name="keyword" id="keyword"   class="btn " type="text" placeholder="代理编号/微信号/手机号/" />
-      
-      <?php  if($cf['yzm_status']==1){ ?>
-      
-      <input id='yzm' name="yzm"   class="yzmbtn "  type="text" placeholder="验证码" /> 				
-      <div class="yzmimg"><img src="data/code.php" alt="验证码"  title="点击刷新"  style="width:100px;"  onclick="this.src='data/code.php?d='+Math.random();"></div>
-      
-      <?php } ?>	
-      
-      
-      <button type="submit"  class="search_btn" ">点击查询</button>
-      <a href="wapreg.php"  class="reg_btn">申请成为代理</a>
-      <div class="footer">版权所有：上海拉丽丝商贸有限公司 www.frangi.cn</div>
-    </form>
+      <div class="top_box">
+        <div class="top_logo">
+        </div>
+        <p class="top_title">代理授权查询</p>
+        <form action="zs/wapzslist.php" method="GET">
+          <input name="keyword" id="keyword"   class="btn " type="text" placeholder="代理编号/微信号/手机号/" />
+          <?php  if($cf['yzm_status']==1){ ?>
+          <input id='yzm' name="yzm"   class="yzmbtn "  type="text" placeholder="验证码" /> 				
+          <div class="yzmimg"><img src="data/code.php" alt="验证码"  title="点击刷新"  style="width:100px;"  onclick="this.src='data/code.php?d='+Math.random();"></div>
+          <?php } ?>	
+          <button type="submit"  class="search_btn">点击查询</button>
+          <a href="wapreg.php"  class="regist_btn">申请成为代理</a>
+          <div class="footer">版权所有：上海拉丽丝商贸有限公司 www.frangi.cn</div>
+        </form>
+      </div>
+    </div>
   </div>
-  
-</div>
-
 </body>
-
 </html>

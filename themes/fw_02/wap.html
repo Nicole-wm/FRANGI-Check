@@ -1,33 +1,35 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="HandheldFriendly" content="true">  
-<title><?php echo $cf['site_name'];?></title>
-<meta name="keywords" content="<?php echo $cf['page_keywords'];?>" />
-<meta name="description" content="<?php echo $cf['page_desc'];?>" />
-<link rel="stylesheet" href="themes/<?php echo $cf['site_themes'];?>/css/wap.css">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="HandheldFriendly" content="true">  
+  <title><?php echo $cf['site_name'];?></title>
+  <meta name="keywords" content="<?php echo $cf['page_keywords'];?>" />
+  <meta name="description" content="<?php echo $cf['page_desc'];?>" />
+  <link rel="stylesheet" href="themes/<?php echo $cf['site_themes'];?>/css/wap.css">
 </head>
 <body>
 
-<div class="wap"><img src="themes/<?php echo $cf['site_themes'];?>/images/bodybg.jpg">
-  <div>
-   <form action="ts/fwm_ts_wap.php" method="POST">
-  <input name="bianhao" id="bianhao"   class="btn " type="text" placeholder="请输入防伪码" />
-  
-   <?php  if($cf['yzm_status']==1){ ?>
-  
-	 <input id='yzm' name="yzm"   class="yzmbtn "  type="text" placeholder="验证码" /> 				
-	<div class="yzmimg"><img src="data/code.php" alt="验证码"  title="点击刷新"  style="width:100px;" onclick="this.src='data/code.php?d='+Math.random();"></div>
-	
- <?php } ?>	
-				
-  
-  <button type="submit" id="search" class="search_btn">点击查询</button>
-  </form>
-   <span type="submit" id="vqrcode" class="search_btn" onclick="vqrcode()">微信扫码查询</span>
+  <div class="wap"><img src="themes/<?php echo $cf['site_themes'];?>/images/bodybg.jpg">
+    <div>
+     <form action="ts/fwm_ts_wap.php" method="POST">
+      <input name="bianhao" id="bianhao"   class="btn " type="text" placeholder="请输入防伪码" />
+      
+      <?php  if($cf['yzm_status']==1){ ?>
+      
+      <input id='yzm' name="yzm"   class="yzmbtn "  type="text" placeholder="验证码" /> 				
+      <div class="yzmimg"><img src="data/code.php" alt="验证码"  title="点击刷新"  style="width:100px;" onclick="this.src='data/code.php?d='+Math.random();"></div>
+      
+      <?php } ?>	
+      
+      
+      <button type="submit" id="search" class="search_btn">点击查询</button>
+    </form>
+    <span type="submit" id="vqrcode" class="search_btn" onclick="vqrcode()">微信扫码查询</span>
+    
+    <div class="footer">版权所有：上海拉丽丝商贸有限公司 www.frangi.cn</div>
   </div>
 </div>
 
@@ -45,28 +47,28 @@
    * 邮件主题：【微信JS-SDK反馈】具体问题
    * 邮件内容说明：用简明的语言描述问题所在，并交代清楚遇到该问题的场景，可附上截屏图片，微信团队会尽快处理你的反馈。
    */
-  wx.config({
+   wx.config({
     debug: false,
     appId: '<?php echo $signPackage["appId"];?>',
     timestamp: <?php echo $signPackage["timestamp"];?>,
     nonceStr: '<?php echo $signPackage["nonceStr"];?>',
     signature: '<?php echo $signPackage["signature"];?>',
-	url: '<?php echo $signPackage["url"];?>',
+    url: '<?php echo $signPackage["url"];?>',
     jsApiList: [
       // 微信扫一扫
-        'scanQRCode'
-    ]
-  });
+      'scanQRCode'
+      ]
+    });
    function vqrcode(){
-	   wx.scanQRCode({
+    wx.scanQRCode({
     needResult: 0, // 默认为0，扫描结果由微信处理，1则直接返回扫描结果，
     scanType: ["qrCode","barCode"], // 可以指定扫二维码还是一维码，默认二者都有
     success: function (res) {
     var result = res.resultStr; // 当needResult 为 1 时，扫码返回的结果
-}
+  }
 });
-	   
-   }
- 
+    
+  }
+  
 </script>
 </html>

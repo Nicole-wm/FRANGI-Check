@@ -36,16 +36,6 @@ img {
 	width:90%;
 	margin:0 auto;
 }
-.wap div a {
-	display:block;
-	width:100%;
-	height:70px;
-	text-align:center;
-	line-height:4.5rem;
-	font-size:2rem;
-	cursor:pointer;
-	border-radius:50px;
-}
 .wap div .btn {
 	display:block;
 	width:100%;
@@ -83,29 +73,19 @@ img {
 	margin-top:10px;
 	height:45px;
 }
-.wap div .search_btn {
+.wap div .search_btn,.wap div .regist_btn,.wap div .reg_btn {
 	display:block;
 	width:100%;
-	height:90px;
+	line-height:45px;
+	font-size:20px;
+	color:#000000;
+	margin-bottom:20px;
 	text-align:center;
-	font-size:40px;
-	color:#fff;
-	border:none;
-	cursor:pointer;
 	background-color:#000000;
+	border:0px;
+	color: #ffffff;
 }
 /**申请链接CSS**/
-.wap div .reg_btn {
-	width:100%;
-	height:60px;
-	text-align:center;
-	font-size:24px;
-	color:#fff;
-	border:none;
-	cursor:pointer;
-	background-color:#000000;
-	margin-bottom: 20px;
-}
 .wap div .footer {
 	clear:both;
 	line-height:1.5;
