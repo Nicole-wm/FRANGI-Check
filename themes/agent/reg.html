@@ -1,0 +1,224 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<title><?php echo $cf['site_name'];?></title>
+	<meta name="keywords" content="<?php echo $cf['page_keywords'];?>" />
+	<meta name="description" content="<?php echo $cf['page_desc'];?>" />	
+	<link rel="stylesheet" href="themes/<?php echo $cf['agent_themes'];?>/css/pc.css">
+	<link href="<?php echo $cf['manage_themes']; ?>/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+	<!---手机自适应代码 -->	
+	<script type="text/javascript">
+		var mobileAgent = new Array("iphone", "ipod", "ipad", "android", "mobile", "blackberry", "webos", "incognito", "webmate", "bada", "nokia", "lg", "ucweb", "skyfire");
+		var browser = navigator.userAgent.toLowerCase(); 
+		var isMobile = false; 
+		for (var i=0; i<mobileAgent.length; i++){ if (browser.indexOf(mobileAgent[i])!=-1){ isMobile = true; 
+//alert(mobileAgent[i]); 
+location.href = "wapreg.php";
+break; } } 
+</script>
+<script src="../themes/manage/layer/jquery-1.9.1.min.js"></script>
+<script src="./themes/manage/layer/layer.js"></script>
+
+</head>
+<body>
+	<?php
+	$act = $_GET["act"];
+	$yqm = trim($_GET["yqm"]);
+	$FileID=date("Ymd") . '' . rand(0,99);
+	$regagentid=$cf['agent_ew'].$FileID;
+	?>
+	<div class="wrap">
+
+		<!---顶部 -->
+		<div class="header">
+			<div class="hd c_float">
+				<div class="bd_w70">
+					<div class="f_left left_wp">
+						<img class="logo" src="themes/<?php echo $cf['agent_themes'];?>/images/logo.png" alt="" />
+					</div>
+					<div class="f_right right_wp c_float">
+						<div class="c_float f_left pg_wrap">
+							<p class="f_left index_pg">
+								<a class="color_yellow" href="agent.php" ><b><i class=" icon-zoom-in"></i>  代理商授权查询</b></a></p>
+
+							</div>
+							<a onclick="agentlogin()" ><div class="f_right login"><i class="icon-rocket"></i> 进入代理商平台</div></a>
+
+							<script>
+								function agentlogin(){
+									layer.open({
+										type: 2,
+										title:'手机扫一扫登陆',
+  skin: 'layui-layer-rim', //加上边框
+  shadeClose: true,
+  shade: 0.3,
+  area: ['240px', '240px'],
+  content: 'qrcode_login.php'
+}); 
+								}
+							</script>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!---顶部END -->			
+
+
+			<!---注册开始 -->			
+
+			<div>
+
+				<div class="banner">
+					<!---开始 -->
+					<form name="formagent" method="post" enctype="multipart/form-data" action="?act=regagent">
+						<!--注册表单开始，以下为隐藏表单字段 --> 
+						<input name="agentid" id="agentid"   type="hidden"  value="<?php echo $regagentid; ?>" />
+						<input  type="hidden" name="applytime" value="<?php echo date('Y-m-d h:s',time());?>">
+						<input type="hidden" name="url"  value=""  >
+						<input type="hidden" name="addtime" value="<?php echo date("Y-m-d");?>"  >
+						<input type="hidden" name="jietime" value="<?php echo date("Y-m-d",strtotime("+365 days"));?>"  >
+						<input type="hidden" id="about"  >
+						<input type="hidden" name="tel"   >							
+						<input type="hidden" name="dizhi"   >
+						<input type="hidden" name="beizhu" id="beizhu"  value="">
+						<input type="hidden" name="shzt"  value="2">
+						<input type="hidden" name="hmd"   value="no">
+						<input type="hidden" name="password"   value="123456" >
+						<!--以下为可填写表单字段 --> 	
+						<div class="reg_box">
+							<div class="top_logo">
+							</div>
+							<p class="top_title">申请成为代理商</p>
+							<div class="reg_wp"  >
+								<div class="reg_input_wp "  >	
+									<input name="name"  id="name"   class="f_left " type="text"   placeholder="您的姓名(必填）" >
+								</div>	
+							</div>
+
+							<div class="reg_wp">
+								<div class="reg_input_wp ">	
+									<input name="phone"  id="phone"   class="f_left " type="text"  placeholder="您的手机号(必填）"  onkeyup="value=value.replace(/[^1234567890-]+/g,'')">
+								</div>	
+							</div>
+
+							<div class="reg_wp" >
+								<div class="reg_input_wp "  >	
+									<input name="weixin"  id="weixin"   class="f_left " type="text"   placeholder="您的微信号(必填）" >
+								</div>	
+							</div>
+
+							<div class="reg_wp">
+								<div class="reg_input_wp ">	
+									<input name="idcard"  id="idcard"   class="f_left " type="text"  placeholder="您的身份证号(必填）" >
+								</div>	
+							</div>
+
+							<div class="reg_wp"  >
+								<div class="reg_input_wp "  >	
+									<input name="qq"  id="qq"   class="f_left " type="text"    placeholder="您的QQ号">
+								</div>	
+							</div>
+
+							<!-- 判断是否是代理发起的邀请的注册，是则隐藏上级代理表单填写，改为自动获取 -->
+							<?php if($yqm=="") {?>
+							<div class="reg_wp"   >
+								<div class="reg_input_wp ">	
+
+									<input  name="sjdls" type="text"  class="f_left "  id="sjdls" value="<?php echo $yqm; ?>"   placeholder="上级代理微信">
+
+								</div>	
+							</div>
+							<?php }else {?>
+							<input  name="sjdls" type="hidden"  class="f_left "  id="sjdls" value="<?php echo $yqm; ?>"  >
+							<?php }?>
+							<!-- 判断结束 --> 
+
+							<div class="reg_wp" >
+								<div class="reg_input_wp "  >
+									<select name="product" class="f_left"> 
+										<option value="全部产品">不限代理产品</option>
+										<?php 
+										$pro = mysql_query("SELECT * FROM tgs_pro order by id desc ");
+										while($row = mysql_fetch_array($pro))
+										{
+										$pro_name = $row['pro_name'];
+										$pro_id = $row['id'];
+										?>
+
+										<option value="<?php echo $pro_id; ?>"><?php echo $pro_name; ?></option><?php }?></select>
+
+									</select>
+								</div>
+							</div>
+
+
+
+
+							<div class="reg_wp" >
+								<div class="reg_input_wp " >	
+									<input 
+									name="quyu" type="text"  class="f_left "  id="quyu"    placeholder="期待代理区域（必填）">
+								</div>	
+							</div>
+
+
+
+							<div class="reg_wp"  >
+								<div class="reg_input_wp " >
+									<select name="dengji"  class="f_left " id="dengji"  > 
+
+										<?php 
+										$pro = mysql_query("SELECT * FROM tgs_dljb order by id desc ");
+										while($row = mysql_fetch_array($pro))
+										{
+										$dljb = $row['dljb'];
+										$jbid = $row['id'];
+										?>
+
+										<option value="<?php echo $jbid; ?>"><?php echo $dljb; ?></option><?php }?></select>
+									</select>
+								</div>
+							</div>
+
+
+							<?php  if($cf['yzm_status']==1){ 
+							?>
+							<div class="reg_yzm_wp">
+								<div class="reg_yzm_input">	
+									<input id='yzm' name="yzm"  class="f_left "  type="text" placeholder="验证码" />
+									<div class="f_right  reg_yzm_search_btn"><img src="data/code.php" alt="验证码"  title="点击刷新" onclick="this.src='data/code.php?d='+Math.random();"/></div>
+
+								</div>	
+							</div>
+							<?php } ?>		
+
+							<button type="submit" class="reg_search_btn">提&nbsp;&nbsp;&nbsp;&nbsp;交&nbsp;&nbsp;&nbsp;&nbsp;申&nbsp;&nbsp;&nbsp;&nbsp;请</button> 
+
+
+
+						</div>
+
+					</form>
+
+
+
+
+				</div>
+
+
+
+			</div>
+		</body>
+
+
+
+
+		<script>
+			$("#search").click(function(){
+				$("#trace_form").submit();
+			});
+		</script>
+		</html>

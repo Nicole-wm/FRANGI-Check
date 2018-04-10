@@ -1,0 +1,40 @@
+数据库表结构说明:
+
+
+tgs_admin    管理员表
+
+tgs_agent    代理商表
+
+tgs_box      装箱表
+
+tgs_box_log   装箱记录表
+
+tgs_code      防伪码表
+
+tgs_config     系统配置表
+
+tgs_dljb        代理级别表
+
+tgs_fh_log      发货记录表
+
+tgs_hisagent    代理商查询记录表
+
+tgs_hissy       溯源记录表
+
+tgs_history     防伪查询表
+
+tgs_lc          流程记录表
+
+tgs_lcfl        流程分类表
+
+tgs_moban       模板列表
+
+tgs_pro          产品表
+
+tgs_suyuna       溯源实例
+
+tgs_th_log       退货记录表
+
+tgs_zsmb          证书横板表
+
+tgs_zszdcs        证书字段表

@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="HandheldFriendly" content="true">  
+  <title><?php echo $cf['site_name'];?></title>
+  <meta name="keywords" content="<?php echo $cf['page_keywords'];?>" />
+  <meta name="description" content="<?php echo $cf['page_desc'];?>" />
+  <link rel="stylesheet" href="themes/<?php echo $cf['agent_themes'];?>/css/wap.css">
+</head>
+<body>
+  <div class="login"><a href="agent"><img src="themes/<?php echo $cf['agent_themes'];?>/images/login.png" ></a></div>
+  <div class="wap " >
+    <img src="themes/<?php echo $cf['agent_themes'];?>/images/sobg.jpg">
+    <div>
+     <form action="zs/wapzslist.php" method="GET">
+      <input name="keyword" id="keyword"   class="btn " type="text" placeholder="代理编号/微信号/手机号/" />
+      
+      <?php  if($cf['yzm_status']==1){ ?>
+      
+      <input id='yzm' name="yzm"   class="yzmbtn "  type="text" placeholder="验证码" /> 				
+      <div class="yzmimg"><img src="data/code.php" alt="验证码"  title="点击刷新"  style="width:100px;"  onclick="this.src='data/code.php?d='+Math.random();"></div>
+      
+      <?php } ?>	
+      
+      
+      <button type="submit"  class="search_btn" ">点击查询</button>
+      <a href="wapreg.php"  class="reg_btn">申请成为代理</a>
+      <div class="footer">版权所有：上海拉丽丝商贸有限公司 www.frangi.cn</div>
+    </form>
+  </div>
+  
+</div>
+
+</body>
+
+</html>
