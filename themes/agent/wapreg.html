@@ -48,7 +48,9 @@
         <input  name="qq" type="text" class="btn " id="qq"  placeholder="您的QQ号">
         <!-- 判断是否是代理发起的邀请的注册，是则隐藏上级代理表单填写，改为自动获取 -->
         <input  name="sjdls" <?php if($yqm=="") {?>type="text" <?php }else {?>type="hidden"<?php }?> class="btn " id="sjdls" value="<?php echo $yqm ?>" placeholder="上级代理微信">
-        <select name="product" class="btn"> 
+        <input type="hidden" name="product" id="product"  value="全部产品">
+        <input type="hidden" name="quyu" id="quyu"  value="全部">
+        <!-- <select name="product" class="btn"> 
          <option value="全部产品">代理产品不限</option>
          <?php 
          $pro = mysql_query("SELECT * FROM tgs_pro order by id desc ");
@@ -61,34 +63,34 @@
          <option value="<?php echo $pro_id; ?>"><?php echo $pro_name; ?></option><?php }?></select>
 
          <input name="quyu" type="text"  class="btn "  placeholder="期待代理区域（必填）" >
+       -->
 
 
 
+       <select name="dengji" class="btn " id="dengji"  > 
 
-         <select name="dengji" class="btn " id="dengji"  > 
+        <?php 
+        $pro = mysql_query("SELECT * FROM tgs_dljb order by id desc ");
+        while($row = mysql_fetch_array($pro))
+        {
+        $dljb = $row['dljb'];
+        $jbid = $row['id'];
+        ?>
 
-          <?php 
-          $pro = mysql_query("SELECT * FROM tgs_dljb order by id desc ");
-          while($row = mysql_fetch_array($pro))
-          {
-          $dljb = $row['dljb'];
-          $jbid = $row['id'];
-          ?>
+        <option value="<?php echo $jbid; ?>"><?php echo $dljb; ?></option><?php }?></select>
 
-          <option value="<?php echo $jbid; ?>"><?php echo $dljb; ?></option><?php }?></select>
+        <?php  if($cf['yzm_status']==1){ ?>
 
-          <?php  if($cf['yzm_status']==1){ ?>
+        <input id='yzm' name="yzm"   class="yzmbtn "  type="text" placeholder="验证码" /> 				
+        <div class="yzmimg"><img src="data/code.php" alt="验证码"  title="点击刷新"  style="width:100px;"  onclick="this.src='data/code.php?d='+Math.random();"></div>
 
-          <input id='yzm' name="yzm"   class="yzmbtn "  type="text" placeholder="验证码" /> 				
-          <div class="yzmimg"><img src="data/code.php" alt="验证码"  title="点击刷新"  style="width:100px;"  onclick="this.src='data/code.php?d='+Math.random();"></div>
-
-          <?php } ?>	
-          <button type="submit" id="search" class="reg_btn" >确认提交</button>
-          <div class="footer">版权所有：上海拉丽丝商贸有限公司 www.frangi.cn</div>
-        </form>
-      </div>
+        <?php } ?>	
+        <button type="submit" id="search" class="reg_btn" >确认提交</button>
+        <div class="footer">版权所有：上海拉丽丝商贸有限公司 www.frangi.cn</div>
+      </form>
     </div>
   </div>
+</div>
 
 </body>
 
