@@ -136,7 +136,7 @@ else
 			<div class="f_right right_wp c_float">
 				<div class="c_float f_left pg_wrap">
 					<p class="f_left index_pg">
-						<a class="color_yellow" href="http://fw.ewsaas.com" target="_blank">官方网站</a></p>
+						<a class="color_yellow" href="http://www.frangi.cn" target="_blank">官方网站</a></p>
 						<p class="f_left index_pg"><a class="color_f" href="http://www.ew80.com" target="_blank" >系统购买</a></p>
 						<p class="f_left user_pg"><a class="color_f" href="/agent.php" >返回重查</a></p>
 					</div>
